@@ -1,68 +1,65 @@
 package modelo;
 
 public class Item {
-	private String nombre;
-	private int cantidad;
-	private String tipo;
-	private String descripcion;
-	private int danio;
-	
-	public Item(String nombre, int cantidad, String tipo, String descripcion, int danio) {
-		setNombre(nombre);
-		setCantidad(cantidad);
-		setTipo(tipo);
-		setDescripcion(descripcion);
-		setDanio(danio);
-	}
-	public void usarItem() {
-		if(cantidad>0) {
-			this.cantidad=cantidad-1;
-		}
-	}
+    private String nombre;
+    private int cantidad;
+    private String tipo;
+    private String descripcion;
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public void usarItem() {
+        if (cantidad <= 0) {
+            throw new ItemExcepcion("No hay cantidad disponible");
+        }
+        this.cantidad = cantidad - 1;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public String getTipo() {
-		return tipo;
-	}
+    public void setDescripcion(String descripcion) {
+        if (descripcion == null || descripcion.isEmpty()) {
+            throw new ItemExcepcion("Descripcion no permitida");
+        }
+        this.descripcion = descripcion;
+    }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public String getTipo() {
+        return tipo;
+    }
 
-	public int getCantidad() {
-		return cantidad;
-	}
+    public void setTipo(String tipo) {
+        if (tipo == null || tipo.isEmpty()) {
+            throw new ItemExcepcion("Tipo no permitido");
+        }
+        this.tipo = tipo;
+    }
 
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
+    public int getCantidad() {
+        return cantidad;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public void setCantidad(int cantidad) {
+        if (cantidad < 0) {
+            throw new ItemExcepcion("Cantidad invalida");
+        }
+        this.cantidad = cantidad;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	public String toString() {
-		return "Nombre: "+nombre+"\nDescripcion: "+descripcion+"\nCantidad: "+cantidad+"\nTipo: "+tipo+"\n";
-	}
-	
-	public void setDanio(int danio) {
-	    if (danio < 0 || danio > 10) {
-	        throw new IllegalArgumentException("Daño inválido");
-	    }
-	    this.danio = danio;
-	}
-	public int getDanio() {
-		return danio;
-	}
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        if (nombre == null || nombre.isEmpty()) {
+            throw new ItemExcepcion("Nombre no permitido");
+        }
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\nDescripcion: " + descripcion
+                + "\nCantidad:" + cantidad + "\nTipo: " + tipo + "\n";
+    }
 }
