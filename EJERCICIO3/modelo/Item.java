@@ -1,4 +1,3 @@
-```java
 package modelo;
 
 public class Item {
@@ -7,6 +6,12 @@ public class Item {
     private String tipo;
     private String descripcion;
 
+    public Item(String nombre, int cantidad, String tipo, String descripcion) {
+		setNombre(nombre);
+		setCantidad(cantidad);
+		setTipo(tipo);
+		setDescripcion(descripcion);
+	}
     public void usarItem() {
         if (cantidad <= 0) {
             throw new ItemExcepcion("No hay cantidad disponible");
@@ -64,4 +69,3 @@ public class Item {
                 + "\nCantidad:" + cantidad + "\nTipo: " + tipo + "\n";
     }
 }
-```
