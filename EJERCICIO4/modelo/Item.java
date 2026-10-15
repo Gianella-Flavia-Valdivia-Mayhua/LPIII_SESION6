@@ -17,7 +17,7 @@ public class Item {
 
     public void usarItem() {
         if (cantidad <= 0) {
-            throw new ItemExcepcion("No hay cantidad disponible");
+            throw new IllegalArgumentException("No hay cantidad disponible");
         }
         this.cantidad = cantidad - 1;
     }
@@ -28,7 +28,7 @@ public class Item {
 
     public void setDescripcion(String descripcion) {
         if (descripcion == null || descripcion.isEmpty()) {
-            throw new ItemExcepcion("Descripcion no permitida");
+            throw new IllegalArgumentException("Descripcion no permitida");
         }
         this.descripcion = descripcion;
     }
@@ -39,7 +39,7 @@ public class Item {
 
     public void setTipo(String tipo) {
         if (tipo == null || tipo.isEmpty()) {
-            throw new ItemExcepcion("Tipo no permitido");
+            throw new IllegalArgumentException("Tipo no permitido");
         }
         this.tipo = tipo;
     }
@@ -50,7 +50,7 @@ public class Item {
 
     public void setCantidad(int cantidad) {
         if (cantidad < 0) {
-            throw new ItemExcepcion("Cantidad invalida");
+            throw new IllegalArgumentException("Cantidad invalida");
         }
         this.cantidad = cantidad;
     }
@@ -61,7 +61,7 @@ public class Item {
 
     public void setNombre(String nombre) {
         if (nombre == null || nombre.isEmpty()) {
-            throw new ItemExcepcion("Nombre no permitido");
+            throw new IllegalArgumentException("Nombre no permitido");
         }
         this.nombre = nombre;
     }
